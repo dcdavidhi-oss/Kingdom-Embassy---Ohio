@@ -1,4 +1,6 @@
-/* Base */
+/* =========
+   Base
+   ========= */
 
 *,
 *::before,
@@ -7,12 +9,11 @@
 }
 
 :root {
-  /* Colors from logo: black + rich gold + white */
   --bg-dark: #000000;
   --bg-darker: #000000;
   --bg-alt: #050505;
   --bg-card: #111111;
-  --accent: #ffd000; /* gold */
+  --accent: #ffd000;
   --accent-soft: rgba(255, 208, 0, 0.1);
   --accent-strong: #ffcc00;
   --text-main: #ffffff;
@@ -56,10 +57,6 @@ body {
   text-align: center;
   max-width: 640px;
   margin: 0 auto 2.5rem;
-}
-
-.section-heading p {
-  margin: 0.5rem 0;
 }
 
 .section-grid {
@@ -122,14 +119,20 @@ p {
   font-weight: 600;
 }
 
-/* Header / Nav */
+/* =========
+   Header / Nav
+   ========= */
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
   backdrop-filter: blur(16px);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.85));
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.96),
+    rgba(0, 0, 0, 0.85)
+  );
   border-bottom: 1px solid rgba(38, 38, 38, 0.9);
 }
 
@@ -171,7 +174,7 @@ p {
 .nav {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.2rem;
   font-size: 0.9rem;
 }
 
@@ -270,7 +273,8 @@ p {
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease,
+    border-color 0.15s ease, color 0.15s ease;
 }
 
 .btn-primary {
@@ -296,9 +300,9 @@ p {
 }
 
 .btn-give {
-  background: rgba(255, 208, 0, 0.1);
+  background: rgba(255, 208, 0, 0.08);
   border-radius: 999px;
-  border: 1px solid rgba(255, 208, 0, 0.6);
+  border: 1px solid rgba(255, 208, 0, 0.7);
   color: var(--accent);
   padding-inline: 1.4rem;
 }
@@ -330,7 +334,9 @@ p {
   border-radius: 999px;
 }
 
-/* Hero */
+/* =========
+   Hero
+   ========= */
 
 .hero {
   position: relative;
@@ -431,25 +437,7 @@ p {
   margin-bottom: 0.75rem;
 }
 
-/* Service cards */
-
-.service-card p {
-  margin-bottom: 0.45rem;
-}
-
-.service-day {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--text-muted);
-}
-
-.service-info {
-  font-size: 0.95rem;
-  color: var(--accent);
-}
-
-/* Checklists */
+/* Lists / Checklists */
 
 .checklist {
   list-style: none;
@@ -472,7 +460,7 @@ p {
   color: var(--accent);
 }
 
-/* Events */
+/* Events / Sermons */
 
 .events-list {
   display: grid;
@@ -497,6 +485,16 @@ p {
   margin-bottom: 0.65rem;
 }
 
+.card-link {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
 /* Connect */
 
 .connect-grid .connect-card {
@@ -517,16 +515,6 @@ p {
 
 .connect-card:hover::after {
   opacity: 1;
-}
-
-.card-link {
-  font-size: 0.9rem;
-  text-decoration: none;
-  color: var(--accent);
-}
-
-.card-link:hover {
-  text-decoration: underline;
 }
 
 /* Media */
@@ -664,7 +652,9 @@ textarea {
   color: var(--text-muted);
 }
 
-/* Responsive */
+/* =========
+   Responsive
+   ========= */
 
 @media (max-width: 840px) {
   .nav {
@@ -684,7 +674,7 @@ textarea {
     transition: opacity 0.15s ease, transform 0.15s ease;
   }
 
-  .nav-open .nav {
+  body.nav-open .nav {
     opacity: 1;
     transform: scaleY(1);
     pointer-events: auto;
