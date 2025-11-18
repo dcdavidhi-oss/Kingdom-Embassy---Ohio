@@ -1,41 +1,45 @@
-// Mobile nav toggle
-const navToggle = document.getElementById("navToggle");
-const mainNav = document.getElementById("mainNav");
+// Simple site scripts: mobile nav, dropdown, dynamic year
 
-if (navToggle && mainNav) {
-  navToggle.addEventListener("click", () => {
-    document.body.classList.toggle("nav-open");
-  });
+document.addEventListener("DOMContentLoaded", () => {
+  // Mobile nav toggle
+  const navToggle = document.getElementById("navToggle");
+  const body = document.body;
+
+  if (navToggle) {
+    navToggle.addEventListener("click", () => {
+      body.classList.toggle("nav-open");
+    });
+  }
 
   // Close nav when clicking a link (on mobile)
-  mainNav.addEventListener("click", (e) => {
-    if (e.target.tagName === "A") {
-      document.body.classList.remove("nav-open");
-    }
-  });
-}
-
-// Simple dropdown logic for "Connect"
-const dropdown = document.querySelector(".nav-dropdown");
-const dropdownToggle = document.querySelector(".nav-dropdown-toggle");
-
-if (dropdown && dropdownToggle) {
-  dropdownToggle.addEventListener("click", () => {
-    const isOpen = dropdown.classList.toggle("open");
-    dropdownToggle.setAttribute("aria-expanded", String(isOpen));
+  const navLinks = document.querySelectorAll(".nav a, .nav-dropdown-menu a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      body.classList.remove("nav-open");
+    });
   });
 
-  // Close on click outside
-  document.addEventListener("click", (e) => {
-    if (!dropdown.contains(e.target)) {
-      dropdown.classList.remove("open");
-      dropdownToggle.setAttribute("aria-expanded", "false");
-    }
+  // Dropdown menu
+  document.querySelectorAll(".nav-dropdown-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const parent = btn.closest(".nav-dropdown");
+      parent.classList.toggle("open");
+    });
   });
-}
 
-// Year in footer
-const yearSpan = document.getElementById("year");
-if (yearSpan) {
-  yearSpan.textContent = new Date().getFullYear();
-}
+  // Close dropdown when clicking outside
+  document.addEventListener("click", (event) => {
+    const dropdowns = document.querySelectorAll(".nav-dropdown");
+    dropdowns.forEach((dd) => {
+      if (!dd.contains(event.target)) {
+        dd.classList.remove("open");
+      }
+    });
+  });
+
+  // Dynamic year in footer
+  const yearSpan = document.getElementById("year");
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+});
